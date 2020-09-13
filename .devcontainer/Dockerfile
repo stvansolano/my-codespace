@@ -41,6 +41,9 @@ RUN chown ${USERNAME}:root /usr/local/share/copy-kube-config.sh \
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
+RUN apt-get install -y nodejs
+
 # Setting the ENTRYPOINT to docker-init.sh will configure non-root access to the Docker
 # socket. The script will also execute CMD if you need to alter startup behaviors.
 ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
